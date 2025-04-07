@@ -4,14 +4,14 @@ spring:
       server:
         git:
           uri: https://github.com/creatorsventure/s02-cloud-config
-          search-paths: config/**
+          search-paths: properties/**
           defaultLabel: main
 
         vault:
           host: local.docker.vault    # <-- Vault host
           port: 8200                  # <-- Vault port
           scheme: http                # <-- use https in prod
-          backend: secret             # <-- Vault secret engine
+          backend: kv                 # <-- Vault secret or kv depends on vault engine
           default-key: app-secret     # <-- fallback context for all apps
           profile-separator: '-'      # <-- resolves secret/app-secret-dev, etc.
           authentication: TOKEN       # <-- required explicitly
