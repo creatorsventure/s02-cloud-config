@@ -1,0 +1,27 @@
+# Redis Props
+spring:
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+  data:
+    redis:
+      host: local.docker.redis
+      port: 6379
+      password: redis123
+      timeout: 60000
+#Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://local.docker.service-registry:8761/eureka
+  instance:
+    hostname: local.docker.service-registry
+
+# security Configurations
+# Keystore
+security:
+  # 15 minutes
+  JWTAccessTokenExpirationMins: 15
+  # 7 days
+  JWTRefreshTokenExpirationMins: 10080
