@@ -8,7 +8,7 @@ spring:
   application:
     name: s02-cloud-config
   profiles:
-    active: vault, git, test
+    active: vault, git, dev
 
 eureka:
   client:

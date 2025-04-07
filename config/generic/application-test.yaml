@@ -6,7 +6,7 @@ spring:
       time-to-live: 60000
   data:
     redis:
-      host: localhost
+      host: local.docker.redis
       port: 6379
       password: redis123
       timeout: 60000
@@ -14,26 +14,13 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://local.docker.service-registry:8761/eureka
   instance:
-    hostname: localhost
+    hostname: local.docker.service-registry
 
 # security Configurations
 # Keystore
 security:
-  # The below commented properties will be loaded from vault
-  #keystorePath: ${vault.keystorePath}
-  #keystorePassword: ${vault.keystorePassword}
-  # Current key alias + password
-  #keystoreCurrentAlias:
-  #name: ${vault.keystoreCurrentAlias.name}
-  #keyPassword: ${vault.keystoreCurrentAlias.keyPassword}
-  # Old (expired) keys
-  #keystoreOldAliases:
-  #- name: ${vault.keystoreOldAliases.0.name}
-  #keyPassword: ${vault.keystoreOldAliases.0.keyPassword}
-  # JWT
-  #JWTSecret: ${vault.JWTSecret}
   # 15 minutes
   JWTAccessTokenExpirationMins: 15
   # 7 days
