@@ -6,5 +6,5 @@ spring:
       kv:
         default-context: app-secret
         enabled: true
-        backend: secret
+        backend: kv
 
