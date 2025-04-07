@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/creatorsventure/s04-cloud-config
+          search-paths: config/**
+          defaultLabel: main
+
+        vault:
+          host: localhost             # <-- Vault host
+          port: 8200                  # <-- Vault port
+          scheme: http                # <-- use https in prod
+          backend: secret             # <-- Vault secret engine
+          default-key: app-secret     # <-- fallback context for all apps
+          profile-separator: '-'      # <-- resolves secret/app-secret-dev, etc.
+          authentication: TOKEN       # <-- required explicitly
+          token: root                 # <-- Vault token (dev-only)
+          kv-version: 2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost

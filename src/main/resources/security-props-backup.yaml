@@ -1,0 +1,19 @@
+# security Configurations
+# Keystore
+security:
+  keystorePath: classpath:cv_keystore.p12
+  keystorePassword: Cv@123
+  # Current key alias + password
+  keystoreCurrentAlias:
+    name: cv_1_02042025_01042030
+    keyPassword: Cv@123
+  # Old (expired) keys
+  keystoreOldAliases:
+    - name: cv_02042025_01042030
+      keyPassword: Cv@123
+  # JWT
+  JWTSecret: oVT3Hf4kzYuzrJBc1IZxNwD1f611IlWDBlU1QKF/H2s=
+  # 15 minutes
+  JWTAccessTokenExpirationMins: 15
+  # 7 days
+  JWTRefreshTokenExpirationMins: 10080

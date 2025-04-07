@@ -1,0 +1,77 @@
+# Dev tools
+spring:
+  devtools:
+    restart:
+      log-condition-evaluation-delta: false
+
+# Logger
+logging:
+  level:
+    com.cv: info
+    org.hibernate: info
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.stat: trace
+    org.hibernate.SQL_SLOW: info
+    org.hibernate.cache: debug
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      clean-history-on-start: true
+# Server
+server:
+  shutdown: graceful
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+    min-response-size: 1024
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: always
+# Eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    registryFetchIntervalSeconds: 30
+#Actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
+#Messages
+app:
+  message:
+    success:
+      general: app.message.success.000
+    failure:
+      general: app.message.failure.000
+      blank: app.message.failure.001
+      empty: app.message.failure.002
+      size: app.message.failure.003
+      pattern: app.message.failure.004
+      phone: app.message.failure.005
+      email: app.message.failure.006
+      password: app.message.failure.007
+      password.different: app.message.failure.008
+      password.length: app.message.failure.009
+      password.uppercase: app.message.failure.010
+      password.lowercase: app.message.failure.011
+      password.digit: app.message.failure.012
+      password.special: app.message.failure.013
+      password.whitespace: app.message.failure.014
+      object.unavailable: app.message.failure.015
+      user.exists: app.message.failure.016
+      credential.invalid: app.message.failure.017
+      token.expired: app.message.failure.018

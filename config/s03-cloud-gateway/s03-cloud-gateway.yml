@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: s03-cloud-gateway
+
+# Logger
+logging:
+  file:
+    name: "./config/log/cloud-gateway.log"
+
+# Actuator
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true

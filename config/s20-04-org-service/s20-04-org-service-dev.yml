@@ -1,0 +1,9 @@
+#Server
+spring:
+  datasource:
+    url: jdbc:h2:./config/db/h2/orgdb;DB_CLOSE_ON_EXIT=FALSE
+    username: orgdb
+    password: orgdb
+  h2:
+    console:
+      enabled: true

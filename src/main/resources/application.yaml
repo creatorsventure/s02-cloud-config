@@ -1,0 +1,17 @@
+server:
+  port: 8081
+  shutdown: graceful
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: s02-cloud-config
+  profiles:
+    active: vault, git, test
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
