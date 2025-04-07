@@ -8,10 +8,27 @@ spring:
   application:
     name: s02-cloud-config
   profiles:
-    active: vault, git, test
+    active: vault, git, dev
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     registry-fetch-interval-seconds: 30
+
+# Logger
+logging:
+  file:
+    name: "./config/log/cloud-config.log"
+  level:
+    com.cv: info
+    org.hibernate: info
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.stat: trace
+    org.hibernate.SQL_SLOW: info
+    org.hibernate.cache: debug
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      clean-history-on-start: true

@@ -4,7 +4,7 @@ spring:
       server:
         git:
           uri: https://github.com/creatorsventure/s02-cloud-config
-          search-paths: config/**
+          search-paths: properties/**
           defaultLabel: main
 
         vault:
@@ -15,7 +15,7 @@ spring:
           default-key: app-secret     # <-- fallback context for all apps
           profile-separator: '-'      # <-- resolves secret/app-secret-dev, etc.
           authentication: TOKEN       # <-- required explicitly
-          token: root                 # <-- Vault token (dev-only)
+          token: ${VAULT_TOKEN}       # <-- Vault token (dev-only)
           kv-version: 2
 eureka:
   client:
