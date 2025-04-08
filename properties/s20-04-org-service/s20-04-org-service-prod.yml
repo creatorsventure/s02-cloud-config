@@ -1,7 +1,11 @@
-#DB
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/orgdb
-    username: root
-    password: Root1234
-
+    url: jdbc:mysql://localhost:3306/uamdb
+    # username:
+    # password:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # password:
+      timeout: 60000
