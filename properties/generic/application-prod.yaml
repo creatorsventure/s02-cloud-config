@@ -1,11 +1,3 @@
-#Eureka
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    hostname: localhost
-
 # security Configurations
 # Keystore
 security:
@@ -13,3 +5,15 @@ security:
   JWTAccessTokenExpirationMins: 15
   # 7 days
   JWTRefreshTokenExpirationMins: 10080
+
+eureka:
+  instance:
+    hostname: host.docker.internal   # 👈 for Docker-to-host routing
+    prefer-ip-address: false         # 👈 use hostname in registry
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://local.service-registry.docker:8761/eureka/

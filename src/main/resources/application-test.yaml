@@ -8,7 +8,7 @@ spring:
           defaultLabel: main
 
         vault:
-          host: local.docker.vault    # <-- Vault host
+          host: ${VAULT_HOSTNAME}     # <-- Vault host
           port: 8200                  # <-- Vault port
           scheme: http                # <-- use https in prod
           backend: kv                 # <-- Vault secret or kv depends on vault engine
@@ -17,9 +17,15 @@ spring:
           authentication: TOKEN       # <-- required explicitly
           token: ${VAULT_TOKEN}       # <-- Vault token (dev-only)
           kv-version: 2
+
 eureka:
-  client:
-    service-url:
-      defaultZone: http://local.docker.service-registry:8761/eureka
   instance:
-    hostname: local.docker.service-registry
+    hostname: host.docker.internal   # 👈 for Docker-to-host routing
+    prefer-ip-address: false         # 👈 use hostname in registry
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://local.docker.service-registry:8761/eureka/

@@ -29,12 +29,7 @@ server:
     include-binding-errors: always
     include-message: always
     include-stacktrace: always
-# Eureka
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    registryFetchIntervalSeconds: 30
+
 #Actuator
 management:
   endpoint:

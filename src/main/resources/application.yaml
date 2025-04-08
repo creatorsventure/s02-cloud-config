@@ -10,12 +10,6 @@ spring:
   profiles:
     active: vault, git, dev
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    registry-fetch-interval-seconds: 30
-
 # Logger
 logging:
   file:
@@ -32,3 +26,18 @@ logging:
     rollingpolicy:
       max-file-size: 100MB
       clean-history-on-start: true
+#Actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        include: "*"
+    web:
+      exposure:
+        include: "*"
