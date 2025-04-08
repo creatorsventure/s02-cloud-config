@@ -8,7 +8,7 @@ spring:
           defaultLabel: main
 
         vault:
-          host: local.docker.vault    # <-- Vault host
+          host: ${VAULT_HOSTNAME}     # <-- Vault host
           port: 8200                  # <-- Vault port
           scheme: http                # <-- use https in prod
           backend: kv                 # <-- Vault secret or kv depends on vault engine
