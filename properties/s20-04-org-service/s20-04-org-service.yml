@@ -21,7 +21,6 @@ spring:
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
       ddl-auto: none
     show-sql: true
-
   # Redis
   data:
     redis:
@@ -33,3 +32,8 @@ spring:
       minimum-idle: 10
       maximum-pool-size: 1000
       idle-timeout: 10000
+# Redis Props
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000

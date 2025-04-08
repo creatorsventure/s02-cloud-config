@@ -1,9 +1,11 @@
-#Server
 spring:
   datasource:
-    url: jdbc:h2:./config/db/h2/orgdb;DB_CLOSE_ON_EXIT=FALSE
-    username: orgdb
-    password: orgdb
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://localhost:3306/uamdb
+    # username:
+    # password:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # password:
+      timeout: 60000
