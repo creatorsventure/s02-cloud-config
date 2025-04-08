@@ -4,8 +4,6 @@ logging:
     name: "./config/log/cloud-gateway.log"
 
 spring:
-  application:
-    name: s03-cloud-gateway
   # Cloud
   cloud:
     gateway:
@@ -19,6 +17,7 @@ spring:
               args:
                 name: ORGServiceCircuitBreaker
                 fallbackUri: forward:/fallback/org-service
+
 # Resilience4j
 resilience4j:
   circuitbreaker:
@@ -63,7 +62,6 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
-
 
 # Actuator
 management:
