@@ -5,7 +5,7 @@ spring:
         git:
           uri: https://github.com/creatorsventure/s02-cloud-config
           search-paths: properties/**
-          defaultLabel: main
+          defaultLabel: release
 
         vault:
           host: ${VAULT_HOSTNAME}     # <-- Vault host
