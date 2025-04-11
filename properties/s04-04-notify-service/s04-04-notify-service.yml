@@ -1,11 +1,11 @@
 # Logger
 logging:
   file:
-    name: "./config/log/org-service.log"
+    name: "./config/log/notify-service.log"
 #Datasource
 spring:
   application:
-    name: s20-04-org-service
+    name: s04-04-notify-service
   #JPA
   jpa:
     properties:
@@ -37,18 +37,40 @@ spring:
     type: redis
     redis:
       time-to-live: 60000
+# Kafka
   kafka:
+    # Unique identifier for this client instance (for logging, metrics, etc.)
     client-id: notify-service
+
     consumer:
+      # Consumer group ID. Consumers with the same group share the load of processing messages
       group-id: notify-service-group
+
+      # Where to start reading if no previous offset is found (e.g., "latest", "earliest")
       auto-offset-reset: earliest
+
+      # Do not auto-commit offsets — we will manually acknowledge messages for reliability
       enable-auto-commit: false
+
+      # Deserializer for message keys (usually string-based)
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+      # Deserializer for message values (you can use JSON for custom objects too)
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
     producer:
+      # Wait for full acknowledgment from all Kafka replicas before proceeding
       acks: all
+
+      # Serializer for message keys
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+      # Serializer for message values
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
     listener:
+      # If a Kafka topic is missing at startup, don’t crash the app (useful in dev/staging)
       missing-topics-fatal: false
-      ack-mode: manual # allows more control for production
+
+      # Manual ack mode — gives control over when a message is considered "successfully processed"
+      ack-mode: manual
