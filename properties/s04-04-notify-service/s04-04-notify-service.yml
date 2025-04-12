@@ -32,12 +32,19 @@ spring:
       minimum-idle: 10
       maximum-pool-size: 1000
       idle-timeout: 10000
-# Redis Props
+  # Redis Props
   cache:
     type: redis
     redis:
       time-to-live: 60000
-# Kafka
+  mail:
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  # Kafka
   kafka:
     # Unique identifier for this client instance (for logging, metrics, etc.)
     client-id: notify-service
