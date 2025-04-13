@@ -38,17 +38,14 @@ spring:
     redis:
       time-to-live: 60000
   kafka:
-    client-id: notify-service
-    consumer:
-      group-id: notify-service-group
-      auto-offset-reset: earliest
-      enable-auto-commit: false
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    client-id: s20-04-org-service
     producer:
-      acks: all
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    listener:
-      missing-topics-fatal: false
-      ack-mode: manual # allows more control for production
+      properties:
+        spring.json.add.type.headers: false
+        linger.ms: 10
+        batch.size: 16384
+        acks: all
+        retries: 3
+        enable.idempotence: true
