@@ -17,3 +17,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://local.service-registry.docker:8761/eureka/
+app:
+  api-gateway:
+    org-service:
+      reset-password-url: http://localhost:8080/api/org-service/password/reset-password?id=

@@ -47,11 +47,11 @@ spring:
   # Kafka
   kafka:
     # Unique identifier for this client instance (for logging, metrics, etc.)
-    client-id: ${spring.application.name}
+    client-id: ${app.kafka.notify-service.client-id}
 
     consumer:
       # Consumer group ID. Consumers with the same group share the load of processing messages
-      group-id: ${spring.application.name}
+      group-id: ${app.kafka.notify-service.group}
 
       # Where to start reading if no previous offset is found (e.g., "latest", "earliest")
       auto-offset-reset: earliest

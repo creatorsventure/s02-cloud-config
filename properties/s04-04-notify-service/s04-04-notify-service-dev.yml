@@ -10,10 +10,10 @@ spring:
       # password:
       timeout: 60000
   mail:
-    host: smtp.example.com
+    host: sandbox.smtp.mailtrap.io
     port: 587
-    username: your-username
-    password: your-password
+    username: e944d00f050b4c
+    password: b7e94efd32a77e
   kafka:
     # List of Kafka broker addresses. Use Docker Compose service name if Notify runs in same Docker network
     bootstrap-servers: kafka:9092

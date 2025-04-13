@@ -2,7 +2,7 @@
 logging:
   file:
     name: "./config/log/org-service.log"
-#Datasource
+
 spring:
   application:
     name: s20-04-org-service
@@ -32,13 +32,13 @@ spring:
       minimum-idle: 10
       maximum-pool-size: 1000
       idle-timeout: 10000
-# Redis Props
+  # Redis Props
   cache:
     type: redis
     redis:
       time-to-live: 60000
   kafka:
-    client-id: ${spring.application.name}
+    client-id: ${app.kafka.org-service.client-id}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
