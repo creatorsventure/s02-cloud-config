@@ -41,7 +41,7 @@ spring:
     client-id: ${app.kafka.org-service.client-id}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.add.type.headers: false
         linger.ms: 10
