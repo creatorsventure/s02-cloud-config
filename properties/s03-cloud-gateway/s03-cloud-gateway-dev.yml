@@ -10,3 +10,4 @@ cloud-gateway:
     - "/api/org-service/authentication/refresh-token"
     - "/api/org-service/password/activate-account"
     - "/api/org-service/password/reset-password"
+    - "/api/org-service/password/forgot-password"
