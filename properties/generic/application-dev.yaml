@@ -20,5 +20,5 @@ eureka:
 app:
   api-gateway:
     org-service:
-      activate-account-url: http://localhost:8080/api/org-service/password/activate-account?id=
+      activate-account-url: http://localhost:4200/authentication/activate-account/
       reset-password-url: http://localhost:4200/authentication/reset-password
