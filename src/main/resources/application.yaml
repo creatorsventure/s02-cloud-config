@@ -9,6 +9,32 @@ spring:
     name: s02-cloud-config
   profiles:
     active: vault, git, dev
+  cloud:
+    bus:
+      enabled: true
+      destination: cloud-config-bus
+      refresh:
+        enabled: true
+  kafka:
+    client-id: cloud-config-producer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+      properties:
+        linger.ms: 5
+        batch.size: 16384
+        compression.type: snappy
+    consumer:
+      group-id: cloud-config-bus-group
+      auto-offset-reset: latest
+    properties:
+      security.protocol: PLAINTEXT  # Use 'SSL' or 'SASL_SSL' if secure
+      # Uncomment below if you use SASL/SSL authentication
+      # sasl.mechanism: PLAIN
+      # sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="kafka_user" password="kafka_pass";
+
 
 # Logger
 logging:
