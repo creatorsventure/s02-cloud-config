@@ -8,3 +8,5 @@ cloud-gateway:
     - "/api/org-service/authentication/login"
     - "/api/org-service/authentication/logout"
     - "/api/org-service/authentication/refresh-token"
+    - "/api/org-service/password/activate-account"
+    - "/api/org-service/password/reset-password"
