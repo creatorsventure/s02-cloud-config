@@ -49,3 +49,6 @@ spring:
         acks: all
         retries: 3
         enable.idempotence: true
+    consumer:
+      group-id: ${app.kafka.org-service.group}
+      auto-offset-reset: latest

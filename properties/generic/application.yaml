@@ -8,6 +8,7 @@ spring:
   cloud:
     bus:
       enabled: true
+      destination: ${app.kafka.config-bus.topic}
 
 # Logger
 logging:
@@ -52,9 +53,12 @@ management:
         include: "*"
 app:
   kafka:
+    config-bus:
+      topic: cloud-config-bus
     notify-service:
       client-id: notify-service
       topic: notify-service
       group: notify-service-group
     org-service:
       client-id: org-service
+      group: org-service-group
