@@ -1,5 +1,7 @@
 # Dev tools
 spring:
+  messages:
+    encoding: UTF-8
   devtools:
     restart:
       log-condition-evaluation-delta: false
