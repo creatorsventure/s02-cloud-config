@@ -37,6 +37,11 @@ spring:
     type: redis
     redis:
       time-to-live: 60000
+  cloud:
+    stream:
+      bindings:
+        springCloudBusInput:
+          group: ${app.kafka.org-service.group}
   kafka:
     client-id: ${app.kafka.org-service.client-id}
     producer:

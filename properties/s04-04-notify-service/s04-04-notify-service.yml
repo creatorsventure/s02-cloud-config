@@ -44,6 +44,12 @@ spring:
           auth: true
           starttls:
             enable: true
+  cloud:
+    stream:
+      bindings:
+        springCloudBusInput:
+          group: ${app.kafka.notify-service.group}
+
   # Kafka
   kafka:
     client-id: ${app.kafka.notify-service.client-id}

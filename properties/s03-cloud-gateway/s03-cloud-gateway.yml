@@ -6,6 +6,10 @@ logging:
 spring:
   # Cloud
   cloud:
+    stream:
+      bindings:
+        springCloudBusInput:
+          group: ${app.kafka.cloud-gateway.group}
     gateway:
       routes:
         - id: org-service
