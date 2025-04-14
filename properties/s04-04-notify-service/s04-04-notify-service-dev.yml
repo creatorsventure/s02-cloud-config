@@ -16,4 +16,4 @@ spring:
     password: b7e94efd32a77e
   kafka:
     # List of Kafka broker addresses. Use Docker Compose service name if Notify runs in same Docker network
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: local.kafka.docker:9092
