@@ -17,6 +17,11 @@ spring:
               args:
                 name: ORGServiceCircuitBreaker
                 fallbackUri: forward:/fallback/org-service
+  kafka:
+    client-id: ${app.kafka.cloud-gateway.client-id}
+    consumer:
+      group-id: ${app.kafka.cloud-gateway.group}
+      auto-offset-reset: latest
 
 # Resilience4j
 resilience4j:

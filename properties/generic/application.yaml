@@ -55,6 +55,9 @@ app:
   kafka:
     config-bus:
       topic: cloud-config-bus
+    cloud-gateway:
+      client-id: cloud-gateway
+      group: cloud-gateway-group
     notify-service:
       client-id: notify-service
       topic: notify-service
