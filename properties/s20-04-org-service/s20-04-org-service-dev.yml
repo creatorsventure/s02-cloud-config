@@ -10,4 +10,4 @@ spring:
       # password:
       timeout: 60000
   kafka:
-    bootstrap-servers: kafka:9092 # use the Docker Compose service name if in the same network
+    bootstrap-servers: local.kafka.docker:9092 # use the Docker Compose service name if in the same network
