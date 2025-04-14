@@ -1,3 +1,6 @@
+spring:
+  kafka:
+    bootstrap-servers: kafka:29092
 cloud-gateway:
   allowed-origins:
     - "http://localhost:4200"

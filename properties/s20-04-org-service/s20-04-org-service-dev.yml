@@ -9,3 +9,5 @@ spring:
       port: 6379
       # password:
       timeout: 60000
+  kafka:
+    bootstrap-servers: localhost:9092

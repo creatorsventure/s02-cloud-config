@@ -14,3 +14,5 @@ spring:
     port: 587
     username: e944d00f050b4c
     password: b7e94efd32a77e
+  kafka:
+    bootstrap-servers: localhost:9092
