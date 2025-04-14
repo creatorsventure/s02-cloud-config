@@ -19,6 +19,7 @@ spring:
           kv-version: 2
   kafka:
     bootstrap-servers: kafka:29092
+    # bootstrap-servers: localhost:9092
 
 eureka:
   instance:

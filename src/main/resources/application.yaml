@@ -10,6 +10,10 @@ spring:
   profiles:
     active: vault, git, dev
   cloud:
+    stream:
+      bindings:
+        springCloudBusInput:
+          group: cloud-config-group
     bus:
       enabled: true
       destination: cloud-config-bus
@@ -27,7 +31,7 @@ spring:
         batch.size: 16384
         compression.type: snappy
     consumer:
-      group-id: cloud-config-bus-group
+      group-id: cloud-config-group
       auto-offset-reset: latest
     properties:
       security.protocol: PLAINTEXT  # Use 'SSL' or 'SASL_SSL' if secure
