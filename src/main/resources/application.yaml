@@ -9,6 +9,9 @@ spring:
     name: s02-cloud-config
   profiles:
     active: vault, git, dev
+  cloud:
+    bus:
+      enabled: true
 
 # Logger
 logging:

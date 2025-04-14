@@ -5,6 +5,9 @@ spring:
   devtools:
     restart:
       log-condition-evaluation-delta: false
+  cloud:
+    bus:
+      enabled: true
 
 # Logger
 logging:

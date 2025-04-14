@@ -17,6 +17,8 @@ spring:
           authentication: TOKEN       # <-- required explicitly
           token: ${VAULT_TOKEN}       # <-- Vault token (dev-only)
           kv-version: 2
+  kafka:
+    bootstrap-servers: localhost:9092
 
 eureka:
   instance:

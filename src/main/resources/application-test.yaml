@@ -5,7 +5,7 @@ spring:
         git:
           uri: https://github.com/creatorsventure/s02-cloud-config
           search-paths: properties/**
-          defaultLabel: main
+          defaultLabel: release
 
         vault:
           host: ${VAULT_HOSTNAME}     # <-- Vault host
@@ -17,6 +17,8 @@ spring:
           authentication: TOKEN       # <-- required explicitly
           token: ${VAULT_TOKEN}       # <-- Vault token (dev-only)
           kv-version: 2
+  kafka:
+    bootstrap-servers: localhost:9092
 
 eureka:
   instance:
@@ -28,4 +30,4 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://local.docker.service-registry:8761/eureka/
+      defaultZone: http://local.service-registry.docker:8761/eureka/
