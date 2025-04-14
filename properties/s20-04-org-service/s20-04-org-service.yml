@@ -6,6 +6,9 @@ logging:
 spring:
   application:
     name: s20-04-org-service
+  cloud:
+    bus:
+      enabled: true
   #JPA
   jpa:
     properties:
