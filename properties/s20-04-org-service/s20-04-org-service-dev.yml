@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/orgdb
+    url: jdbc:mysql://local.mysql.docker:3306/orgdb
     # username:
     # password:
   data:
     redis:
-      host: localhost
+      host: local.redis.docker
       port: 6379
       # password:
       timeout: 60000
