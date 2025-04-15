@@ -6,6 +6,9 @@ logging:
 spring:
   application:
     name: s04-04-notify-service
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
   #JPA
   jpa:
     properties:
