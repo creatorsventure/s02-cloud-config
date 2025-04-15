@@ -20,6 +20,7 @@ logging:
     org.hibernate.stat: trace
     org.hibernate.SQL_SLOW: info
     org.hibernate.cache: debug
+    org.springframework.context.support.ResourceBundleMessageSource: debug
   logback:
     rollingpolicy:
       max-file-size: 100MB
