@@ -96,7 +96,6 @@ cloud-gateway:
     - "X-Requested-With"
     - "Origin"
     - "Accept"
-    - "X-USER-ID"
   unauthenticated-paths:
     - "/api/org-service/user/count"
     - "/api/org-service/sign-up"
