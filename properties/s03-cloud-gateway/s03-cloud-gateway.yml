@@ -21,6 +21,15 @@ spring:
               args:
                 name: ORGServiceCircuitBreaker
                 fallbackUri: forward:/fallback/org-service
+        - id: unit-service
+          uri: lb://S30-04-UNIT-SERVICE
+          predicates:
+            - Path=/api/unit-service/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: UnitServiceCircuitBreaker
+                fallbackUri: forward:/fallback/unit-service
   kafka:
     client-id: ${app.kafka.cloud-gateway.client-id}
     consumer:
@@ -43,6 +52,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         baseConfig: default                          # Use the above default config
+      UnitServiceCircuitBreaker:
+        baseConfig: default
       # USERSServiceCircuitBreaker:                  # example to add other services
       #   baseConfig: default
       #   failureRateThreshold: 60                   # Override just the failure threshold for this service
@@ -54,6 +65,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
+      UnitServiceCircuitBreaker:
+        baseConfig: default
   ratelimiter:
     configs:
       default:
@@ -63,6 +76,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
+      UnitServiceCircuitBreaker:
+        baseConfig: default
   timelimiter:
     configs:
       default:
@@ -71,6 +86,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
+      UnitServiceCircuitBreaker:
+        baseConfig: default
 
 # Actuator
 management:
@@ -105,3 +122,10 @@ cloud-gateway:
     - "/api/org-service/password/activate-account"
     - "/api/org-service/password/reset-password"
     - "/api/org-service/password/forgot-password"
+    - "/api/unit-service/sign-up"
+    - "/api/unit-service/authentication/login"
+    - "/api/unit-service/authentication/logout"
+    - "/api/unit-service/authentication/refresh-token"
+    - "/api/unit-service/password/activate-account"
+    - "/api/unit-service/password/reset-password"
+    - "/api/unit-service/password/forgot-password"

@@ -1,0 +1,59 @@
+# Logger
+logging:
+  file:
+    name: "./config/log/unit-service.log"
+
+spring:
+  application:
+    name: s30-04-unit-service
+  #JPA
+  jpa:
+    properties:
+      spring:
+        datasource:
+          initialize: true
+    hibernate:
+      jdbc:
+        lob:
+          non_contextual_creation: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+      ddl-auto: none
+    show-sql: true
+  # Redis
+  data:
+    redis:
+      repositories:
+        enabled: false
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 10
+      maximum-pool-size: 1000
+      idle-timeout: 10000
+  # Redis Props
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+  cloud:
+    stream:
+      bindings:
+        springCloudBusInput:
+          group: ${app.kafka.unit-service.group}
+  kafka:
+    client-id: ${app.kafka.unit-service.client-id}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+        linger.ms: 10
+        batch.size: 16384
+        acks: all
+        retries: 3
+        enable.idempotence: true
+    consumer:
+      group-id: ${app.kafka.unit-service.group}
+      auto-offset-reset: latest

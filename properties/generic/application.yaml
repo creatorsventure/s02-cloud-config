@@ -66,3 +66,6 @@ app:
     org-service:
       client-id: org-service
       group: org-service-group
+    unit-service:
+      client-id: unit-service
+      group: unit-service-group
