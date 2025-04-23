@@ -20,7 +20,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: ORGServiceCircuitBreaker
-                fallbackUri: forward:/fallback/org-service
+                fallbackUri: forward:/fallback/service-down
         - id: unit-service
           uri: lb://S30-04-UNIT-SERVICE-V1
           predicates:
@@ -29,7 +29,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: UnitServiceCircuitBreaker
-                fallbackUri: forward:/fallback/unit-service
+                fallbackUri: forward:/fallback/service-down
   kafka:
     client-id: ${app.kafka.cloud-gateway.client-id}
     consumer:
