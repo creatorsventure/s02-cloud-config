@@ -4,9 +4,6 @@ logging:
     name: "./config/log/unit-service.log"
 
 spring:
-  application:
-    name: s30-04-unit-service
-  #JPA
   jpa:
     properties:
       spring:

@@ -13,18 +13,18 @@ spring:
     gateway:
       routes:
         - id: org-service
-          uri: lb://S20-04-ORG-SERVICE
+          uri: lb://S20-04-ORG-SERVICE-V1
           predicates:
-            - Path=/api/org-service/**
+            - Path=/api/v1/org-service/**
           filters:
             - name: CircuitBreaker
               args:
                 name: ORGServiceCircuitBreaker
                 fallbackUri: forward:/fallback/org-service
         - id: unit-service
-          uri: lb://S30-04-UNIT-SERVICE
+          uri: lb://S30-04-UNIT-SERVICE-V1
           predicates:
-            - Path=/api/unit-service/**
+            - Path=/api/v1/unit-service/**
           filters:
             - name: CircuitBreaker
               args:
