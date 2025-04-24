@@ -54,9 +54,7 @@ resilience4j:
         baseConfig: default                          # Use the above default config
       UnitServiceCircuitBreaker:
         baseConfig: default
-      # USERSServiceCircuitBreaker:                  # example to add other services
-      #   baseConfig: default
-      #   failureRateThreshold: 60                   # Override just the failure threshold for this service
+        # failureRateThreshold: 60                   # Override just the failure threshold for this service
   retry:
     configs:
       default:
