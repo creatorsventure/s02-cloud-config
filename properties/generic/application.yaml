@@ -53,6 +53,10 @@ management:
       exposure:
         include: "*"
 app:
+  info:
+    author: Ramakrishna
+    email: ramakrishna@mail.com
+    description: Downstream service API definition.
   kafka:
     config-bus:
       topic: cloud-config-bus
