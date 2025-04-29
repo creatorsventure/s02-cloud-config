@@ -106,8 +106,11 @@ cloud-gateway:
     - "X-USER-KEY"
     - "X-ORGANIZATION-ID"
     - "X-UNIT-ID"
+    - "X-UNIT-CODE"
     - "X-MERCHANT-ID"
+    - "X-MERCHANT-CODE"
     - "X-SUPER-MERCHANT-ID"
+    - "X-SUPER-MERCHANT-CODE"
   exposed-headers:
     - "Authorization"
     - "Content-Type"
