@@ -1,12 +1,7 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
 cloud-gateway:
   allowed-origins:
     - "http://localhost:4200"
-    - "http://localhost:4201"
-  unauthenticated-paths:
-    - "/api/org-service/user/count"
-    - "/api/org-service/sign-up"
-    - "/api/org-service/authentication/login"
-    - "/api/org-service/authentication/logout"
-    - "/api/org-service/authentication/refresh-token"
-    - "/api/org-service/password/activate-account"
-    - "/api/org-service/password/reset-password"
+    - "http://localhost:4300"

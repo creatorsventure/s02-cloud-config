@@ -6,6 +6,18 @@ spring:
     restart:
       log-condition-evaluation-delta: false
   cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 5000
+            read-timeout: 5000
+            loggerLevel: full
+            request-interceptors:
+              - org.springframework.cloud.openfeign.loadbalancer.LoadBalancerRequestInterceptor
     bus:
       enabled: true
       destination: ${app.kafka.config-bus.topic}
@@ -53,16 +65,30 @@ management:
       exposure:
         include: "*"
 app:
-  kafka:
-    config-bus:
-      topic: cloud-config-bus
-    cloud-gateway:
+  info:
+    author: Ramakrishna
+    email: ramakrishna@mail.com
+    description: Downstream service API definition.
+  cloud-gateway:
+    kafka:
       client-id: cloud-gateway
       group: cloud-gateway-group
-    notify-service:
+  org-service:
+    name: s20-04-org-service-v1
+    kafka:
+      client-id: org-service
+      group: org-service-group
+  unit-service:
+    name: s30-04-unit-service-v1
+    kafka:
+      client-id: unit-service
+      group: unit-service-group
+  notify-service:
+    name: s04-04-notify-service-v1
+    kafka:
       client-id: notify-service
       topic: notify-service
       group: notify-service-group
-    org-service:
-      client-id: org-service
-      group: org-service-group
+  kafka:
+    config-bus:
+      topic: cloud-config-bus

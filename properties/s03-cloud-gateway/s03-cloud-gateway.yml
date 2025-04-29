@@ -9,22 +9,31 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: ${app.kafka.cloud-gateway.group}
+          group: ${app.cloud-gateway.kafka.group}
     gateway:
       routes:
         - id: org-service
-          uri: lb://S20-04-ORG-SERVICE
+          uri: lb://S20-04-ORG-SERVICE-V1
           predicates:
-            - Path=/api/org-service/**
+            - Path=/api/v1/org-service/**
           filters:
             - name: CircuitBreaker
               args:
                 name: ORGServiceCircuitBreaker
-                fallbackUri: forward:/fallback/org-service
+                fallbackUri: forward:/fallback/service-down
+        - id: unit-service
+          uri: lb://S30-04-UNIT-SERVICE-V1
+          predicates:
+            - Path=/api/v1/unit-service/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: UnitServiceCircuitBreaker
+                fallbackUri: forward:/fallback/service-down
   kafka:
-    client-id: ${app.kafka.cloud-gateway.client-id}
+    client-id: ${app.cloud-gateway.kafka.client-id}
     consumer:
-      group-id: ${app.kafka.cloud-gateway.group}
+      group-id: ${app.cloud-gateway.kafka.group}
       auto-offset-reset: latest
 
 # Resilience4j
@@ -43,9 +52,9 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         baseConfig: default                          # Use the above default config
-      # USERSServiceCircuitBreaker:                  # example to add other services
-      #   baseConfig: default
-      #   failureRateThreshold: 60                   # Override just the failure threshold for this service
+      UnitServiceCircuitBreaker:
+        baseConfig: default
+        # failureRateThreshold: 60                   # Override just the failure threshold for this service
   retry:
     configs:
       default:
@@ -54,6 +63,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
+      UnitServiceCircuitBreaker:
+        baseConfig: default
   ratelimiter:
     configs:
       default:
@@ -63,6 +74,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
+      UnitServiceCircuitBreaker:
+        baseConfig: default
   timelimiter:
     configs:
       default:
@@ -71,6 +84,8 @@ resilience4j:
     instances:
       ORGServiceCircuitBreaker:
         base-config: default
+      UnitServiceCircuitBreaker:
+        baseConfig: default
 
 # Actuator
 management:
@@ -79,3 +94,44 @@ management:
       enabled: true
     ratelimiters:
       enabled: true
+#CORS
+cloud-gateway:
+  allowed-headers:
+    - "Authorization"
+    - "Content-Type"
+    - "X-Requested-With"
+    - "Origin"
+    - "Accept"
+    - "X-USER-ID"
+    - "X-USER-KEY"
+    - "X-ORGANIZATION-ID"
+    - "X-UNIT-ID"
+    - "X-UNIT-CODE"
+    - "X-MERCHANT-ID"
+    - "X-MERCHANT-CODE"
+    - "X-SUPER-MERCHANT-ID"
+    - "X-SUPER-MERCHANT-CODE"
+  exposed-headers:
+    - "Authorization"
+    - "Content-Type"
+    - "X-Requested-With"
+    - "Origin"
+    - "Accept"
+  unauthenticated-paths:
+    - "/api/v1/org-service/user/count"
+    - "/api/v1/org-service/sign-up"
+    - "/api/v1/org-service/authentication/login"
+    - "/api/v1/org-service/authentication/logout"
+    - "/api/v1/org-service/authentication/refresh-token"
+    - "/api/v1/org-service/password/activate-account"
+    - "/api/v1/org-service/password/reset-password"
+    - "/api/v1/org-service/password/forgot-password"
+    - "/api/v1/unit-service/sign-up"
+    - "/api/v1/unit-service/sign-up/verify-sign-up"
+    - "/api/v1/unit-service/sign-up/verify-otp"
+    - "/api/v1/unit-service/authentication/login"
+    - "/api/v1/unit-service/authentication/logout"
+    - "/api/v1/unit-service/authentication/refresh-token"
+    - "/api/v1/unit-service/password/activate-account"
+    - "/api/v1/unit-service/password/reset-password"
+    - "/api/v1/unit-service/password/forgot-password"
