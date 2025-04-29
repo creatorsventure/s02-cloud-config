@@ -38,9 +38,9 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: ${app.kafka.org-service.group}
+          group: ${app.org-service.kafka.group}
   kafka:
-    client-id: ${app.kafka.org-service.client-id}
+    client-id: ${app.org-service.kafka.client-id}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -52,5 +52,5 @@ spring:
         retries: 3
         enable.idempotence: true
     consumer:
-      group-id: ${app.kafka.org-service.group}
+      group-id: ${app.org-service.kafka.group}
       auto-offset-reset: latest

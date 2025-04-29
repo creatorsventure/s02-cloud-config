@@ -9,7 +9,7 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: ${app.kafka.cloud-gateway.group}
+          group: ${app.cloud-gateway.kafka.group}
     gateway:
       routes:
         - id: org-service
@@ -31,9 +31,9 @@ spring:
                 name: UnitServiceCircuitBreaker
                 fallbackUri: forward:/fallback/service-down
   kafka:
-    client-id: ${app.kafka.cloud-gateway.client-id}
+    client-id: ${app.cloud-gateway.kafka.client-id}
     consumer:
-      group-id: ${app.kafka.cloud-gateway.group}
+      group-id: ${app.cloud-gateway.kafka.group}
       auto-offset-reset: latest
 
 # Resilience4j

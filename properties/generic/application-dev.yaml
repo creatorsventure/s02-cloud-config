@@ -18,11 +18,10 @@ eureka:
     service-url:
       defaultZone: http://local.service-registry.docker:8761/eureka/
 app:
-  api-gateway:
-    org-service:
-      activate-account-url: http://localhost:4200/authentication/activate-account/
-      reset-password-url: http://localhost:4200/authentication/reset-password/
-    unit-service:
-      login-url: http://localhost:4300/authentication
-      activate-account-url: http://localhost:4300/authentication/activate-account/
-      reset-password-url: http://localhost:4300/authentication/reset-password/
+  org-service:
+    activate-account-url: http://localhost:4200/authentication/activate-account/
+    reset-password-url: http://localhost:4200/authentication/reset-password/
+  unit-service:
+    login-url: http://localhost:4300/authentication
+    activate-account-url: http://localhost:4300/authentication/activate-account/
+    reset-password-url: http://localhost:4300/authentication/reset-password/
