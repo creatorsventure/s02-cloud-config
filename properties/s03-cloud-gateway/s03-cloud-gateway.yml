@@ -17,6 +17,7 @@ spring:
           predicates:
             - Path=/api/v1/org-service/**
           filters:
+            - AddRequestHeader=Authorization, #{request.headers.Authorization}
             - name: CircuitBreaker
               args:
                 name: ORGServiceCircuitBreaker
@@ -26,6 +27,7 @@ spring:
           predicates:
             - Path=/api/v1/unit-service/**
           filters:
+            - AddRequestHeader=Authorization, #{request.headers.Authorization}
             - name: CircuitBreaker
               args:
                 name: UnitServiceCircuitBreaker
