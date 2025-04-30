@@ -16,8 +16,6 @@ spring:
             connect-timeout: 5000
             read-timeout: 5000
             loggerLevel: full
-            request-interceptors:
-              - org.springframework.cloud.openfeign.loadbalancer.LoadBalancerRequestInterceptor
     bus:
       enabled: true
       destination: ${app.kafka.config-bus.topic}
