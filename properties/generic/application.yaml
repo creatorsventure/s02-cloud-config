@@ -75,11 +75,13 @@ app:
       group: cloud-gateway-group
   org-service:
     name: s20-04-org-service-v1
+    contextPath: /api/v1/org-service
     kafka:
       client-id: org-service
       group: org-service-group
   unit-service:
     name: s30-04-unit-service-v1
+    contextPath: /api/v1/unit-service
     kafka:
       client-id: unit-service
       group: unit-service-group
