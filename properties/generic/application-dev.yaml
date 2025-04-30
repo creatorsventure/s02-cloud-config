@@ -8,8 +8,10 @@ security:
 
 eureka:
   instance:
+    # Hostname here tells Eureka Server:
+    #“When I (e.g., org-service, unit-service etc) register, please expose me with hostname host.docker.internal.”
     hostname: host.docker.internal   # 👈 for Docker-to-host routing
-    prefer-ip-address: false         # 👈 use hostname in registry
+    prefer-ip-address: true         # 👈 use hostname in registry
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
   client:
