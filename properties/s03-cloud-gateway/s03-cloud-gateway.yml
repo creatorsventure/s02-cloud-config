@@ -103,7 +103,7 @@ cloud-gateway:
     - "Origin"
     - "Accept"
     - "X-USER-ID"
-    - "X-USER-KEY"
+    - "X-USER-NAME"
     - "X-ORGANIZATION-ID"
     - "X-UNIT-ID"
     - "X-UNIT-CODE"
