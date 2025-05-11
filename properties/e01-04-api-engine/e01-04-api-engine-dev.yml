@@ -4,9 +4,9 @@ spring:
     pool:
       initial-size: 10           # Enough for warming up
       max-size: 100              # <80ms query latency
-      max-idle-time: 60s
-      max-acquire-time: 5s
-      max-create-connection-time: 5s
+      max-idle-time: 30m
+      max-acquire-time: 45s
+      max-create-connection-time: 1m
       validation-query: SELECT 1
   data:
     redis:
