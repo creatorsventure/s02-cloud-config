@@ -24,6 +24,9 @@ logging:
     org.hibernate.SQL_SLOW: info
     org.hibernate.cache: debug
     org.springframework.context.support.ResourceBundleMessageSource: debug
+    org.springframework.r2dbc.core: DEBUG
+    io.r2dbc.postgresql.QUERY: DEBUG
+    io.r2dbc.mysql.client: DEBUG
   logback:
     rollingpolicy:
       max-file-size: 100MB
