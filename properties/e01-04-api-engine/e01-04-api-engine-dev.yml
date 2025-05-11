@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:pool:mysql://localhost:3306/apienginedb
+    url: r2dbc:mysql://localhost:3306/apienginedb
     pool:
       initial-size: 10           # Enough for warming up
       max-size: 100              # <80ms query latency
