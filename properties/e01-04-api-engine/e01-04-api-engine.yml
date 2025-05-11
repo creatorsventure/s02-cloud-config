@@ -1,7 +1,7 @@
 # Logger
 logging:
   file:
-    name: "./config/log/unit-service.log"
+    name: "./config/log/api-engine.log"
 
 spring:
   jpa:
@@ -32,22 +32,13 @@ spring:
   # Redis Props
   cache:
     type: redis
-    redis:
-      time-to-live: 60000
   cloud:
-    openfeign:
-      client:
-        config:
-          default:
-            connect-timeout: 5000
-            read-timeout: 5000
-            loggerLevel: full
     stream:
       bindings:
         springCloudBusInput:
-          group: ${app.unit-service.kafka.group}
+          group: ${app.api-engine.kafka.group}
   kafka:
-    client-id: ${app.unit-service.kafka.client-id}
+    client-id: ${app.api-engine.kafka.client-id}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -59,5 +50,5 @@ spring:
         retries: 3
         enable.idempotence: true
     consumer:
-      group-id: ${app.unit-service.kafka.group}
+      group-id: ${app.api-engine.kafka.group}
       auto-offset-reset: latest

@@ -3,8 +3,8 @@
 security:
   # 15 minutes
   JWTAccessTokenExpirationMins: 15
-  # 7 days
-  JWTRefreshTokenExpirationMins: 10080
+  # 12 Hours
+  JWTRefreshTokenExpirationMins: 720
 
 eureka:
   instance:

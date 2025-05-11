@@ -9,13 +9,6 @@ spring:
     loadbalancer:
       retry:
         enabled: true
-    openfeign:
-      client:
-        config:
-          default:
-            connect-timeout: 5000
-            read-timeout: 5000
-            loggerLevel: full
     bus:
       enabled: true
       destination: ${app.kafka.config-bus.topic}
@@ -89,6 +82,12 @@ app:
       client-id: notify-service
       topic: notify-service
       group: notify-service-group
+  api-engine:
+    name: e01-04-api-engine
+    contextPath: /api/v1/api-engine
+    kafka:
+      client-id: api-engine
+      group: api-engine-group
   kafka:
     config-bus:
       topic: cloud-config-bus
