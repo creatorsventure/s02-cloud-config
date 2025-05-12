@@ -4,15 +4,44 @@ logging:
     name: "./config/log/api-engine.log"
 
 spring:
+  jpa:
+    properties:
+      spring:
+        datasource:
+          initialize: true
+    hibernate:
+      jdbc:
+        lob:
+          non_contextual_creation: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+      ddl-auto: none
+    show-sql: true
+  # Redis
   data:
     redis:
-      client-type: lettuce
       repositories:
         enabled: false
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 10
+      maximum-pool-size: 1000
+      idle-timeout: 10000
   # Redis Props
   cache:
     type: redis
+    redis:
+      time-to-live: 60000
   cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 5000
+            read-timeout: 5000
+            loggerLevel: full
     stream:
       bindings:
         springCloudBusInput:

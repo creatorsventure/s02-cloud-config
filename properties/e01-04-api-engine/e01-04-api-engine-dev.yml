@@ -1,13 +1,6 @@
 spring:
-  r2dbc:
-    url: r2dbc:mysql://localhost:3306/apienginedb
-    pool:
-      initial-size: 10           # Enough for warming up
-      max-size: 100              # <80ms query latency
-      max-idle-time: 30m
-      max-acquire-time: 45s
-      max-create-connection-time: 1m
-      validation-query: SELECT 1
+  datasource:
+    url: jdbc:mysql://local.mysql.docker:3306/apienginedb
   data:
     redis:
       host: local.redis.docker
