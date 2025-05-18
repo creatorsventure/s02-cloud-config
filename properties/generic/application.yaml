@@ -12,6 +12,10 @@ spring:
     bus:
       enabled: true
       destination: ${app.kafka.config-bus.topic}
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    date-format: yyyy-MM-dd'T'HH:mm:ssXXX
 
 # Logger
 logging:
@@ -83,14 +87,23 @@ app:
     name: s04-04-notify-service-v1
     kafka:
       client-id: notify-service
-      topic: notify-service
       group: notify-service-group
+      email-sms:
+        topic: email-sms-topic
+      api-callback:
+        topic: api-callback-topic
+        timeout-sec: 10
+        retry:
+          max-attempts: 3
+          delay-ms: 5000
   api-engine:
     name: e01-04-api-engine
     contextPath: /api/v1/api-engine
     kafka:
       client-id: api-engine
       group: api-engine-group
+      response-listener:
+        topic: api-response-topic
   kafka:
     config-bus:
       topic: cloud-config-bus
