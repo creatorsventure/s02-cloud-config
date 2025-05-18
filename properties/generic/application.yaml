@@ -1,5 +1,11 @@
 # Dev tools
 spring:
+  mvc:
+    contentnegotiation:
+      favor-path-extension: false
+      favor-parameter: false
+      ignore-unknown-path-extensions: true
+      default-content-type: application/json
   messages:
     encoding: UTF-8
   devtools:
