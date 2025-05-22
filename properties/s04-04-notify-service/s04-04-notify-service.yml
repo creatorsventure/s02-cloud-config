@@ -51,6 +51,16 @@ spring:
   # Kafka
   kafka:
     client-id: ${app.notify-service.kafka.client-id}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+        linger.ms: 10
+        batch.size: 16384
+        acks: all
+        retries: 3
+        enable.idempotence: true
     consumer:
       group-id: ${app.notify-service.kafka.group}
       auto-offset-reset: earliest
